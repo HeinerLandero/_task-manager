@@ -1,4 +1,3 @@
-// src/app/services/task.service.ts
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
 import { Person } from '../models/person.model';

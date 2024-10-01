@@ -4,12 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// Componentes
 import { AppComponent } from './app.component';
 import { TaskFormComponent } from './task-form/task-form.component';
-import { TaskListComponent } from './task-list/task-list.component'; // Importa TaskListComponent
+import { TaskListComponent } from './task-list/task-list.component';
 
-// Servicios
 import { TaskService } from './services/task.service';
 import { PersonService } from './services/person.service';
 
@@ -17,7 +15,7 @@ import { PersonService } from './services/person.service';
   declarations: [
     AppComponent,
     TaskFormComponent,
-    TaskListComponent // Declara TaskListComponent aquí
+    TaskListComponent
   ],
   imports: [
     BrowserModule,

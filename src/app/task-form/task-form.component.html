@@ -1,24 +1,55 @@
-<!-- src/app/task-form/task-form.component.html -->
 <form (ngSubmit)="addTask()">
-  <label>
-    Título:
-    <input [(ngModel)]="task.title" name="title" required minlength="5">
-  </label>
-  <label>
-    Completada:
-    <input type="checkbox" [(ngModel)]="task.completed" name="completed">
-  </label>
+  <!-- Nombre tarea -->
   <div>
-    <h3>Asignar Personas</h3>
-    <label>
-      Nombre Completo:
-      <input #fullName required minlength="5">
+    <label for="title_tarea">
+      Nombre de la tarea:
     </label>
-    <label>
-      Edad:
-      <input #age type="number" required min="19">
-    </label>
-    <button (click)="addPerson(fullName.value, age.value)">Agregar Persona</button>
+    <input id="title_tarea" [(ngModel)]="task.title" name="title" required minlength="5">
   </div>
-  <button type="submit">Agregar Tarea</button>
+
+  <!-- Fecha límite -->
+  <div>
+    <label for="fecha-limite">
+      Fecha límite:
+    </label>
+    <input id="fecha-limite" type="date" [(ngModel)]="task.deadline" name="deadline" required>
+  </div>
+
+  <!-- Personas asociadas -->
+  <h3>Personas asociadas</h3>
+  <div>
+    <label for="nombre">
+      Nombre Completo:
+    </label>
+    <input id="nombre" #fullName required minlength="5">
+  </div>
+  <div>
+    <label for="edad">
+      Edad:
+    </label>
+    <input id="edad" #age type="number" required min="18">
+  </div>
+  <button (click)="addPerson(fullName.value, age.value)">Agregar Persona</button>
+
+  <ul>
+    <li *ngFor="let person of task.assignedTo; let i = index">
+      {{ person.fullName }} ({{ person.age }} años)
+      <button (click)="removePerson(i)">Eliminar</button>
+    </li>
+  </ul>
+
+  <!-- Añadir o Eliminar habilidad -->
+  <h3>Habilidades</h3>
+  <div>
+    <input id="habilidad" #skill required minlength="5">
+    <button (click)="addSkill(skill.value)">Añadir Habilidad</button>
+  </div>
+  <ul>
+    <li *ngFor="let skill of task.skills; let i = index">
+      {{ skill }}
+      <button (click)="removeSkill(i)">Eliminar</button>
+    </li>
+  </ul>
+
+  <button type="submit">Guardar Tarea</button>
 </form>
