@@ -1,0 +1,24 @@
+<!-- src/app/task-form/task-form.component.html -->
+<form (ngSubmit)="addTask()">
+  <label>
+    Título:
+    <input [(ngModel)]="task.title" name="title" required minlength="5">
+  </label>
+  <label>
+    Completada:
+    <input type="checkbox" [(ngModel)]="task.completed" name="completed">
+  </label>
+  <div>
+    <h3>Asignar Personas</h3>
+    <label>
+      Nombre Completo:
+      <input #fullName required minlength="5">
+    </label>
+    <label>
+      Edad:
+      <input #age type="number" required min="19">
+    </label>
+    <button (click)="addPerson(fullName.value, age.value)">Agregar Persona</button>
+  </div>
+  <button type="submit">Agregar Tarea</button>
+</form>
