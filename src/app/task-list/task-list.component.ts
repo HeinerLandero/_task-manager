@@ -9,14 +9,33 @@ import { Task } from '../models/task.model';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  filteredTasks: Task[] = [];
+  filter: 'all' | 'completed' | 'pending' = 'all';
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
+    this.filteredTasks = [...this.tasks];
   }
 
-  filterTasks(completed: boolean): void {
-    this.tasks = this.taskService.filterTasks(completed);
+  toggleTaskCompletion(task: Task): void {
+    task.completed = !task.completed;
+    this.applyFilter();
+  }
+
+  applyFilter(): void {
+    if (this.filter === 'completed') {
+      this.filteredTasks = this.tasks.filter(task => task.completed);
+    } else if (this.filter === 'pending') {
+      this.filteredTasks = this.tasks.filter(task => !task.completed);
+    } else {
+      this.filteredTasks = [...this.tasks];
+    }
+  }
+
+  filterTasks(filter: 'all' | 'completed' | 'pending'): void {
+    this.filter = filter;
+    this.applyFilter();
   }
 }

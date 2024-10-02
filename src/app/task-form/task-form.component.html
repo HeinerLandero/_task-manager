@@ -1,5 +1,4 @@
 <form (ngSubmit)="addTask()">
-  <!-- Nombre tarea -->
   <div>
     <label for="title_tarea">
       Nombre de la tarea:
@@ -7,7 +6,6 @@
     <input id="title_tarea" [(ngModel)]="task.title" name="title" required minlength="5">
   </div>
 
-  <!-- Fecha límite -->
   <div>
     <label for="fecha-limite">
       Fecha límite:
@@ -15,7 +13,6 @@
     <input id="fecha-limite" type="date" [(ngModel)]="task.deadline" name="deadline" required>
   </div>
 
-  <!-- Personas asociadas -->
   <h3>Personas asociadas</h3>
   <div>
     <label for="nombre">
@@ -29,7 +26,7 @@
     </label>
     <input id="edad" #age type="number" required min="18">
   </div>
-  <button (click)="addPerson(fullName.value, age.value)">Agregar Persona</button>
+  <button (click)="addPerson(fullName.value, age.value)">[ Agregar Persona ]</button>
 
   <ul>
     <li *ngFor="let person of task.assignedTo; let i = index">
@@ -38,18 +35,17 @@
     </li>
   </ul>
 
-  <!-- Añadir o Eliminar habilidad -->
   <h3>Habilidades</h3>
   <div>
     <input id="habilidad" #skill required minlength="5">
-    <button (click)="addSkill(skill.value)">Añadir Habilidad</button>
+    <button (click)="addSkill(skill.value)">[ Añadir Habilidad ]</button>
   </div>
   <ul>
     <li *ngFor="let skill of task.skills; let i = index">
       {{ skill }}
-      <button (click)="removeSkill(i)">Eliminar</button>
+      <button (click)="removeSkill(i)">[ Eliminar ]</button>
     </li>
   </ul>
 
-  <button type="submit">Guardar Tarea</button>
+  <button type="submit">[ Guardar Tarea ]</button>
 </form>

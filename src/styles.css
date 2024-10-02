@@ -19,6 +19,7 @@ app-task-list{
   border: 2px white dashed;
   padding: 20px;
   border-top: none;
+  flex-direction: column;
 }
 form{
   width: 100%;
@@ -41,6 +42,7 @@ label,h2,h3{
 }
 label{
   display: inline-block;
+  font-size: 16px;
 }
 input{
   background-color: transparent;
@@ -78,10 +80,6 @@ input[type="checkbox"]::after{
 
 
 
-button{
-  color: white;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
+
+
 
